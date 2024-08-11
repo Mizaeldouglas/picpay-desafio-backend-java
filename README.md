@@ -21,8 +21,9 @@
    ```
 
 ## Executar a aplicação Spring Boot
+- Acessar aplicação em:
    ```bash
-      Acessar aplicação em http://localhost:8080.
+      http://localhost:8080.
    ```
 ## Arquitetura
 - (AQUI VAI IMAGENS DO DIAGRAMA)
