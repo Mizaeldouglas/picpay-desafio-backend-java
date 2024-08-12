@@ -24,7 +24,6 @@ public class TransactionService {
     private final NotificationService notificationService;
 
     public TransactionService(TransactionRepository transactionRepository, WalletRepository walletRepository, AuthorizerService authorizerService, NotificationService notificationService) {
-
         this.transactionRepository = transactionRepository;
         this.walletRepository = walletRepository;
         this.authorizerService = authorizerService;
@@ -35,8 +34,8 @@ public class TransactionService {
     public Transaction create(Transaction transaction) {
         validate(transaction);
         var newTransaction = transactionRepository.save(transaction);
-        var walletPayer= walletRepository.findById(transaction.payer()).get();
-        var walletPayee= walletRepository.findById(transaction.payee()).get();
+        var walletPayer = walletRepository.findById(transaction.payer()).orElseThrow(() -> new InvalidTransactionException("Payer wallet not found"));
+        var walletPayee = walletRepository.findById(transaction.payee()).orElseThrow(() -> new InvalidTransactionException("Payee wallet not found"));
         walletRepository.save(walletPayer.debit(transaction.value()));
         walletRepository.save(walletPayee.credit(transaction.value()));
         authorizerService.authorize(transaction);
@@ -47,6 +46,9 @@ public class TransactionService {
 
     private void validate(Transaction transaction) {
         LOGGER.info("validating transaction {}...", transaction);
+        if (transaction.payer() == null || transaction.payee() == null) {
+            throw new InvalidTransactionException("Payer and Payee IDs must not be null");
+        }
         walletRepository.findById(transaction.payee())
                 .map(payee -> walletRepository.findById(transaction.payer())
                         .map(payer -> payer.type() == WalletType.COMUM.getValue() &&
@@ -59,6 +61,6 @@ public class TransactionService {
     }
 
     public List<Transaction> list() {
-    return transactionRepository.findAll();
+        return transactionRepository.findAll();
     }
 }
