@@ -10,21 +10,38 @@
 - Docker Compose
 - H2
 
-## Como Executar
-1. Clonar repositório git:
-   ```bash
-   git clone https://github.com/giuliana-bezerra/picpay-desafio-backend.git
-    ```
-## Executar o Kafka:
-   ```bash
-      docker-compose up
-   ```
 
-## Executar a aplicação Spring Boot
-- Acessar aplicação em:
-   ```bash
-      http://localhost:8080.
+## Como Instalar e Executar
+
+1. Clone este repositório:
+   `git clone clone https://github.com/Mizaeldouglas/picpay-desafio-backend-java.git`
+2. Navegue até a pasta do projeto:
+   `cd picpay-desafio-backend-java`
+3. Instale as dependências do projeto utilizando Maven:
+   `mvn clean install`
+4. Configure as variáveis de ambiente:
+   ```ini
+    spring.application.name=picpay-desafio-backend
+    spring.datasource.url=jdbc:h2:file:./data/picpay
+    spring.datasource.driverClassName=org.h2.Driver
+    spring.datasource.username=sa
+    spring.datasource.password=
+
+    spring.h2.console.enabled=true
+    spring.h2.console.path=/h2-console
+
+    spring.sql.init.mode=always
+    spring.kafka.bootstrap-servers=localhost:9094
+    spring.kafka.producer.value-serializer=org.springframework.kafka.support.serializer.JsonSerializer
+    spring.kafka.consumer.value-deserializer=org.springframework.kafka.support.serializer.JsonDeserializer
+    spring.kafka.consume
    ```
+5. Inicie a aplicação:
+   `mvn spring-boot:run`
+6. Acesse o console do H2:
+   `http://localhost:8080/h2-console`
+7. A aplicação estará disponível em `http://localhost:8080`
+
 ## Arquitetura
 - (AQUI VAI IMAGENS DO DIAGRAMA)
 ## API
