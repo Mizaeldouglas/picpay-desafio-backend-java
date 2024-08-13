@@ -1,6 +1,8 @@
 # API Desafio PicPay Backend Spring Boot
 
 ### Projeto desenvolvido para solucionar um desafio de backend. A solução é uma versão simplificada de um sistema de transações.
+* projeto baseado nesse desafio
+[Desafio picpay - backend](https://github.com/PicPay/picpay-desafio-backend?tab=readme-ov-file)
 
 ## Tecnologias
 - Spring Boot
@@ -61,7 +63,17 @@
     ```
 
 ## Arquitetura
-- (AQUI VAI IMAGENS DO DIAGRAMA)
+<br>
+
+![Captura de Tela 2024-08-12 às 21 17 55](https://github.com/user-attachments/assets/27c2aeb2-c4e0-43ab-ac0e-15672a859b26)
+
+
+![Captura de Tela 2024-08-12 às 21 18 15](https://github.com/user-attachments/assets/b3862b23-16db-4fbd-a72e-20d7146f74be)
+
+
+
+
+
 ## API
 ### Criar Transação
 - POST /transaction
