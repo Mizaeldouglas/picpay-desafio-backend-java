@@ -42,6 +42,24 @@
    `http://localhost:8080/h2-console`
 7. A aplicação estará disponível em `http://localhost:8080`
 
+## Usando Docker
+1. Clone este repositório: 
+    ```
+        git clone https://github.com/Mizaeldouglas/picpay-desafio-backend-java.git
+    ```
+2. Navegue até a pasta do projeto: 
+    ```
+        cd picpay-desafio-backend-java
+    ```
+3. Construa e inicie os contêineres Docker: 
+    ```
+      docker-compose up --build
+    ```
+4. A aplicação estará disponível em: 
+    ```
+        http://localhost:8080
+    ```
+
 ## Arquitetura
 - (AQUI VAI IMAGENS DO DIAGRAMA)
 ## API
