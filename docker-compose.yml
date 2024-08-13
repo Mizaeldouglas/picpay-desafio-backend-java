@@ -1,6 +1,22 @@
-version: '3.8'
-
 services:
+  app:
+    image: picpay-desafio
+    build: .
+    ports:
+      - '8080:8080'
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:h2:file:./data/picpay
+      - SPRING_DATASOURCE_DRIVER_CLASS_NAME=org.h2.Driver
+      - SPRING_DATASOURCE_USERNAME=sa
+      - SPRING_DATASOURCE_PASSWORD=password
+      - SPRING_H2_CONSOLE_ENABLED=true
+      - SPRING_H2_CONSOLE_PATH=/h2-console
+      - SPRING_SQL_INIT_MODE=always
+      - SPRING_KAFKA_BOOTSTRAP_SERVERS=kafka:9092
+      - SPRING_KAFKA_PRODUCER_VALUE_SERIALIZER=org.springframework.kafka.support.serializer.JsonSerializer
+      - SPRING_KAFKA_CONSUMER_VALUE_DESERIALIZER=org.springframework.kafka.support.serializer.JsonDeserializer
+      - SPRING_KAFKA_CONSUMER_PROPERTIES_SPRING_JSON_TRUSTED_PACKAGES=*
+
   kafka:
     image: 'bitnami/kafka:latest'
     ports:
