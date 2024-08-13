@@ -6,11 +6,12 @@
 
 ## Tecnologias
 - Spring Boot
-- Spring MVC
 - Spring Data JDBC
 - Spring for Apache Kafka
 - Docker Compose
+- SQL
 - H2
+- Swagger
 
 
 ## Como Instalar e Executar
@@ -42,7 +43,8 @@
    `mvn spring-boot:run`
 6. Acesse o console do H2:
    `http://localhost:8080/h2-console`
-7. A aplicação estará disponível em `http://localhost:8080`
+7. A aplicação estará disponível em `http://localhost:8080` ou no swagger `http://localhost:8080/swagger-ui/index.html#/`
+
 
 ## Usando Docker
 1. Clone este repositório: 
@@ -61,6 +63,11 @@
     ```
         http://localhost:8080
     ```
+    ou no swagger
+    ```
+        http://localhost:8080/swagger-ui/index.html#/
+    ```
+
 
 ## Arquitetura
 <br>
